@@ -120,3 +120,32 @@ const func6 = (val1, val2) => (
   }
 )
 console.log(func6('西野七瀬', 26));
+
+
+/*
+  分割代入
+*/
+
+const myProf = {
+  name3: "守屋麗奈",
+  age3: 23,
+};
+
+const { name3, age3 } = myProf;
+const message3 = `私の名前は${name3}です。年齢は${age3}歳です。`;
+console.log(message3);
+
+// 抽出したプロパティの別の名前をつける
+const myProf2 = {
+  name4: "平手友梨奈",
+  age4: 21,
+};
+const { name4: newName, age4: newAge } = myProf2;
+const message4 = `私の名前は${newName}です。年齢は${newAge}歳です。`;
+console.log(message4);
+
+// 配列の分割代入
+const myProf3 = ['橋本奈々未', 29];
+const [ name5, age5 ] = myProf3;
+const message5 = `私の名前は${name5}です。年齢は${age5}歳です。`;
+console.log(message5);
