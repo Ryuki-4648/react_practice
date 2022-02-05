@@ -60,3 +60,22 @@ console.log(arr1);
 // 値の追加
 arr1.push("hinatazala"); // ★push
 console.log(arr1);
+
+
+
+/*
+  テンプレートリテラル
+*/
+
+const name1 = "白石麻衣";
+const age1 = "29";
+const message1 = `私の名前は${name1}です。年齢は${age1}才です。`;
+console.log(message1);
+
+// テンプレートリテラルの中で、関数の呼び出しを計算を実行
+function sayHello() {
+  return "こんにちは";
+}
+const month1 = 1;
+const message2 = `みなさん${sayHello()}。今日から${month1 * 3}月ですね。`;
+console.log(message2);
