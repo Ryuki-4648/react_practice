@@ -79,3 +79,44 @@ function sayHello() {
 const month1 = 1;
 const message2 = `みなさん${sayHello()}。今日から${month1 * 3}月ですね。`;
 console.log(message2);
+
+
+/*
+  アロー関数
+*/
+
+// 方法1
+function func1(value) {
+  return value;
+}
+console.log(func1("func1です"));
+
+// 方法2
+const func2 = function(value) {
+  return value;
+};
+console.log(func2("func2です"));
+
+// アロー関数
+const func3 = (value) => {
+  return value;
+};
+console.log(func3("func3です"));
+
+// アロー関数は省略可能
+const func4 = value => {
+  return value;
+};
+console.log(func4("func4です"));
+
+// 単一行 なみかっことreturnを省略できる
+const func5 = (num1, num2) => num1 + num2;
+
+// 返却値が複数行の場合
+const func6 = (val1, val2) => (
+  {
+    name2: val1,
+    age2: val2,
+  }
+)
+console.log(func6('西野七瀬', 26));
