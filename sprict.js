@@ -149,3 +149,22 @@ const myProf3 = ['橋本奈々未', 29];
 const [ name5, age5 ] = myProf3;
 const message5 = `私の名前は${name5}です。年齢は${age5}歳です。`;
 console.log(message5);
+
+
+
+/*
+  デフォルト値
+*/
+
+const sayHello2 = (yourname) => console.log(`こんにちは${yourname}さん。`);
+sayHello2();
+// こんにちはundefinedさん。　と出力される
+
+const sayHello3 = (yourname = "ゲスト") => console.log(`こんにちは${yourname}さん。`);
+sayHello3();
+
+const myProf4 = {
+  age6: 24,
+};
+const { name6 = "guest" } = myProf4;
+console.log(`こんにちは${name6}さん。`);
