@@ -258,6 +258,7 @@ for ( let i = 0; i < arr15.length; i++ ) {
   console.log(arr15[i]);
 }
 
+// map
 const nameArr = [1, 2, 3, 4, 5, 6];
 //console.log(arr16);
 const nameArr2 = nameArr.map( (name) => {
@@ -267,3 +268,25 @@ const nameArr2 = nameArr.map( (name) => {
 console.log(nameArr2); // 1, 2, 3, 4, 5, 6
 
 nameArr.map((name) => console.log(name));
+
+
+
+// filter 条件に一致するものを取り出す
+const numArr = [1, 2, 3, 4, 5, 6];
+const newNumArr = numArr.filter( (num) => {
+  return num % 2 === 1; // 奇数を取り出す場合
+} );
+
+const nameArr3 = ["白石", "西野", "橋本"];
+nameArr3.map( (name, index) => 
+  console.log(`${index + 1}番目は${name}です。`)
+);
+
+const newNameArr = nameArr3.map( (name) => {
+  if ( name === "白石" ) {
+    return name;
+  } else {
+    return `${name}さん`;
+  }
+} );
+console.log(newNameArr);
