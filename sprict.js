@@ -227,3 +227,22 @@ const arr14 = [10, 20]; // コピー元
 const arr13 = [...arr14];
 arr13[0] = 40;
 console.log(arr14); // コピー元は10 20のまま
+
+
+
+
+// オブジェクトの省略記法
+const membername = "与田祐希";
+const yourage = "21";
+const nogi1 = {
+  membernane: membername,
+  yourage: yourage,
+};
+console.log(nogi1);
+
+// 簡略化バージョン
+const nogi2 = {
+  membername,
+  yourage,
+};
+console.log(nogi2);
