@@ -170,6 +170,9 @@ const { name6 = "guest" } = myProf4;
 console.log(`こんにちは${name6}さん。`);
 
 
+
+
+
 /*
   スプレッド構文
 */
@@ -222,7 +225,7 @@ arr11[0] = 50;
 console.log(arr10); // 50,20 コピー元の配列にも影響を与える
 console.log(arr11); // 50,20
 
-// スプレッド構文だと
+// スプレッド構文だと？
 const arr14 = [10, 20]; // コピー元
 const arr13 = [...arr14];
 arr13[0] = 40;
@@ -230,8 +233,9 @@ console.log(arr14); // コピー元は10 20のまま
 
 
 
-
-// オブジェクトの省略記法
+/*
+  オブジェクトの省略記法
+*/
 const membername = "与田祐希";
 const yourage = "21";
 const nogi1 = {
@@ -250,8 +254,11 @@ console.log(nogi2);
 
 
 
-// 繰り返し処理 (map , filter)
 
+
+/*
+  繰り返し処理 (map , filter)
+*/
 // for文の場合
 const arr15 = [1, 2, 3, 4, 5, 6];
 for ( let i = 0; i < arr15.length; i++ ) {
@@ -290,3 +297,45 @@ const newNameArr = nameArr3.map( (name) => {
   }
 } );
 console.log(newNameArr);
+
+
+
+
+
+
+/*
+  三項演算子
+*/
+const val5 = 1 > 0 ? "trueです" : "falseです";
+console.log(val5);
+
+// 数値と文字列の場合
+const printFormattedNum = (num) => {
+  const formattedNum = typeof num === "number" ? num.toLocaleString() : "数値を入力してください。";
+  console.log(formattedNum);
+};
+
+printFormattedNum(1300);
+printFormattedNum("1300");
+
+/*
+条件式 ? trueの場合 : falseの場合
+
+** typeof: 型を示す文字列を返す
+number, string, boolean, undefined
+数値かどうかを判断したいので typeof num === "number"となる
+
+
+** toLocaleString(): 三桁ごとにカンマ区切り
+ロケール（設定された地域や言語）に基づいた形式
+
+num.toLocaleString("de")にすると、1,300ではなく1.300が出力される
+※ deはドイツの言語コード
+*/
+
+
+const checkSumOver100 = ( num1, num2 ) => {
+  return num1 + num2 > 100 ? "100over" : "許容範囲内です";
+};
+console.log(checkSumOver100(10, 30));
+console.log(checkSumOver100(10,100));
