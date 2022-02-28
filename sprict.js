@@ -223,7 +223,7 @@ console.log(arr10); // 50,20 コピー元の配列にも影響を与える
 console.log(arr11); // 50,20
 
 // スプレッド構文だと
-const arr14 = [10, 20];
+const arr14 = [10, 20]; // コピー元
 const arr13 = [...arr14];
 arr13[0] = 40;
 console.log(arr14); // コピー元は10 20のまま
