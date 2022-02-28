@@ -246,3 +246,24 @@ const nogi2 = {
   yourage,
 };
 console.log(nogi2);
+
+
+
+
+// 繰り返し処理 (map , filter)
+
+// for文の場合
+const arr15 = [1, 2, 3, 4, 5, 6];
+for ( let i = 0; i < arr15.length; i++ ) {
+  console.log(arr15[i]);
+}
+
+const nameArr = [1, 2, 3, 4, 5, 6];
+//console.log(arr16);
+const nameArr2 = nameArr.map( (name) => {
+  return name;
+} );
+// map()の中に関数を書く () => {}
+console.log(nameArr2); // 1, 2, 3, 4, 5, 6
+
+nameArr.map((name) => console.log(name));
