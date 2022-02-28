@@ -168,3 +168,62 @@ const myProf4 = {
 };
 const { name6 = "guest" } = myProf4;
 console.log(`こんにちは${name6}さん。`);
+
+
+/*
+  スプレッド構文
+*/
+
+const arr2 = [1, 2, 3, 4, 5, 10];
+console.log(...arr2);
+
+// ２つの引数を合計して出力する関数
+const arr3 = [1, 2, 3, 4];
+const summaryFunc = (num1, num2) => console.log(num1 + num2);
+summaryFunc(arr3[0], arr3[1]); // 1 + 2 = 3
+summaryFunc(...arr3); // 1 + 2 = 3
+console.log(...arr3);
+
+// 要素をまとめる
+const arr4 = [10, 20, 30, 40, 50, 60];
+const [num1, num2, ...arr5] = arr4;
+console.log(num1);
+console.log(num2);
+console.log(...arr5); // 30 40 50 60
+
+const arr6 = [2, 4, 6, 8];
+const arr7 = [1, 3, 5, 7];
+const arr8 = [...arr6]; // スプレッド構文でコピー　新しい配列が生成される
+const arr9 = [...arr6, ...arr7]; // スプレッド構文で結合
+console.log(arr9);
+
+// 複数のオブジェクトの結合
+const obj2 = {
+  val1: 10,
+  val2: 20
+};
+const obj3 = {
+  val3: 30,
+  val4: 40
+};
+const obj4 = {...obj2}; // スプレッド構文でコピー
+const obj5 = {...obj2, ...obj3}; // スプレッド構文で結合
+console.log(obj4);
+console.log(obj5);
+
+
+// イコールでコピーすると参照値が引き継がれてしまう
+const arr10 = [10, 20];
+const arr11 = arr10;
+console.log(arr10); // 10,20
+console.log(arr11); // 10,20
+
+arr11[0] = 50;
+console.log(arr10); // 50,20 コピー元の配列にも影響を与える
+console.log(arr11); // 50,20
+
+// スプレッド構文だと
+const arr14 = [10, 20];
+const arr13 = [...arr14];
+arr13[0] = 40;
+console.log(arr14); // コピー元は10 20のまま
