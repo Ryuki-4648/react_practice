@@ -339,3 +339,36 @@ const checkSumOver100 = ( num1, num2 ) => {
 };
 console.log(checkSumOver100(10, 30));
 console.log(checkSumOver100(10,100));
+
+
+
+
+
+/*
+  論理演算子
+*/
+const flag1 = true;
+const flag2 = false;
+if ( flag1 || flag2 ) {
+  console.log("フラグのどちらかはtrue"); // 出力される
+}
+if ( flag1 && flag2 ) {
+  console.log("フラグは両方true"); // 出力されない
+}
+
+const num3 = null;
+const fee = num3 || "金額未設定です";
+console.log(fee);
+/*
+金額未設定ですが出力される。num3に100を指定したら100が出力される
+
+||: 左側が「false」判定なら右側を返す
+左側がtrueなら左を返す
+*/
+
+const num4 = 100;
+const fee2 = num4 && "何か設定されました";
+console.log(fee2);
+/*
+&&: 左側が「true」判定なら右側を返す
+*/
