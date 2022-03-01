@@ -53,3 +53,53 @@ getElementsByClassNameとは違い、NosListが取得される
 
 
 // 従来のjs: 「何に」対して操作をするのか明示的に指定する必要あり
+
+
+
+
+
+
+/* 
+  DOMの作成、追加、削除
+*/
+
+// document.createElement
+const divEl = document.createElement('div');
+console.log(divEl);
+// <div></div>が生成される
+
+// HTMLUnknownElementの生成
+const nullEl = document.createElement('nogizaka');
+console.log(nullEl);
+// <nogizaka></nogizaka>が生成される
+
+
+
+// DOMの追加
+// append 後ろにどんどん追加
+const divEl2 = document.createElement('div');
+const pEl = document.createElement('p');
+const h2El = document.createElement('h2');
+
+divEl2.appendChild(pEl);
+console.log(divEl2);
+/* 
+divタグの中にpタグが生成される
+あるelementの配下に他の「末尾」にelementを追加することができる
+*/
+
+divEl2.appendChild(h2El);
+console.log(divEl2);
+// <div>の中にp,h2タグが追加される
+
+
+// prepend 前に追加
+const divEl3 = document.createElement('div');
+const pEl2 = document.createElement('p');
+const h2El2 = document.createElement('h2');
+
+divEl3.prepend(pEl2);
+divEl3.prepend(h2El2);
+console.log(divEl3);
+
+// divの配下にp,h2の順で追加される
