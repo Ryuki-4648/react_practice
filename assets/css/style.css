@@ -1,14 +1,87 @@
-.container {
-  border: 1px solid #ccc;
-  padding: 16px;
-  margin: 8px;
+body {
+  color: #505050;
 }
 
-li > div {
-  display: flex;
-  align-items: center;
+h1 {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+p {
+  margin: 0;
 }
 
 button {
-  margin-left: 16px;
+  border: none;
+  padding: 4px 20px;
+  cursor: pointer;
+  transition: all .3s;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  background-color: #ededed;
+}
+
+button:hover {
+  background-color: #ddd;
+}
+
+.title {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  margin: 0 auto 20px;
+  color: #666;
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  margin: 0 auto 10px;
+}
+
+.item-name {
+  margin: 0 10px 0 0;
+}
+
+.common-area {
+  width: 400px;
+  border-radius: 8px;
+}
+
+.input-area {
+  height: 30px;
+  display: flex;
+  margin: 0 auto 30px;
+}
+
+input {
+  margin: 0 10px 0 0;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 12px;
+  outline: none;
+}
+
+.input-area button {
+  width: 120px;
+}
+
+
+.incomplete-area {
+  background-color: #fafafa;
+  border: 1px solid #812990;
+  min-height: 200px;
+  padding: 20px 10px;
+  margin: 0 auto 30px;
+}
+
+.complete-area {
+  background-color: #fafafa;
+  border: 1px solid #812990;
+  min-height: 200px;
+  padding: 20px 10px;
+  margin: 0 auto;
 }
