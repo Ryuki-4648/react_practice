@@ -38,9 +38,38 @@ const onClickAdd = () => {
   // ボタン生成の時点でイベントを設定
   // 押された完了ボタンの親タグを未完了リストから削除
   completeButton.addEventListener('click', () => {
-    const completeTarget = completeButton.parentNode;
-    document.getElementById('incomplete-list').removeChild(completeTarget);
-    //document.getElementById('complete-list').appendChild(completeTarget);
+
+    // 削除の処理を関数化
+    deleteFromIncompleteList(completeButton.parentNode);
+
+    // 完了リストに追加する要素
+    const addTarget = completeButton.parentNode; // 完了ボタンの親要素(li.list-row)を取得
+    // 親の子であるpタグに設定されているテキストを取得
+    // addTargetの最初の要素にpタグが設定されている → firstElementChildを使用
+    const text = addTarget.firstElementChild.innerText;
+
+    // li.list-row以下を削除
+    addTarget.textContent = null;
+
+    // pタグ生成
+    const p = document.createElement('p');
+    p.className = 'item';
+    p.innerText = text;
+    
+    // 戻すボタン生成
+    const backButton = document.createElement('button');
+    backButton.innerText = "戻す";
+
+    // liタグの子要素に各要素(p, button)を設定
+    addTarget.appendChild(p);
+    addTarget.appendChild(backButton);
+
+    // 完了リストに追加
+    document.getElementById('complete-list').appendChild(addTarget);
+
+
+    //const completeTarget = completeButton.parentNode;
+    //document.getElementById('incomplete-list').removeChild(completeTarget);
   });
 
   // 削除ボタンを生成
@@ -50,13 +79,15 @@ const onClickAdd = () => {
 
   // ボタン生成の時点でイベントを設定
   deleteButton.addEventListener('click', () => {
-    //alert('削除');
-    // 押された削除ボタンの親タグ(li)を完了リストから削除
-    const deleteTarget = deleteButton.parentNode;
-    //console.log(deleteTarget);
 
+    // 削除の処理を関数化
+    // targetはなに？　クリックされるdeleteButtoの「親要素」！！！
+    deleteFromIncompleteList(deleteButton.parentNode);
+
+    // 押された削除ボタンの親タグ(li)を完了リストから削除
+      // const deleteTarget = deleteButton.parentNode; 関数化したので削除
     // 該当のliタグをul.incomplete-listから削除する
-    document.getElementById('incomplete-list').removeChild(deleteTarget);
+      // document.getElementById('incomplete-list').removeChild(deleteTarget); 関数化したので削除
   });
 
 
