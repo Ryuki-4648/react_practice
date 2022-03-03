@@ -60,6 +60,17 @@ const onClickAdd = () => {
     const backButton = document.createElement('button');
     backButton.innerText = "戻す";
 
+    // 戻すボタンを押したときの処理
+    backButton.addEventListener('click', () => {
+      // 押された戻すボタンの親タグli.list-rowを完了リストから削除
+      const deleteTarget = backButton.parentNode;
+      document.getElementById('complete-list').removeChild(deleteTarget);
+  
+      // テキストを取得
+      const text = deleteTarget.firstElementChild.innerText;
+      
+    });
+
     // liタグの子要素に各要素(p, button)を設定
     addTarget.appendChild(p);
     addTarget.appendChild(backButton);
@@ -88,7 +99,7 @@ const onClickAdd = () => {
       // const deleteTarget = deleteButton.parentNode; 関数化したので削除
     // 該当のliタグをul.incomplete-listから削除する
       // document.getElementById('incomplete-list').removeChild(deleteTarget); 関数化したので削除
-  });
+    });
 
 
   // liの子要素に各要素を配置する
@@ -108,6 +119,12 @@ const onClickAdd = () => {
 const deleteFromIncompleteList = (target) => {
   document.getElementById('incomplete-list').removeChild(target);
 }
+
+// 未完了リストに追加する関数
+// ※todoの追加と完了リストから未完了リストに追加する処理に共通部分があるため
+const createIncompleteList = (text) => {
+
+};
 
 document.getElementById('add-button')
 .addEventListener('click', () => onClickAdd());
