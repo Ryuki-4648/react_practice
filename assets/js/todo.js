@@ -36,8 +36,11 @@ const onClickAdd = () => {
   //console.log(completeButton);
 
   // ボタン生成の時点でイベントを設定
+  // 押された完了ボタンの親タグを未完了リストから削除
   completeButton.addEventListener('click', () => {
-    alert('完了');
+    const completeTarget = completeButton.parentNode;
+    document.getElementById('incomplete-list').removeChild(completeTarget);
+    //document.getElementById('complete-list').appendChild(completeTarget);
   });
 
   // 削除ボタンを生成
@@ -67,6 +70,13 @@ const onClickAdd = () => {
   ★ 次に完了と削除ボタンにidを付与するのではなくボタン生成の時点でイベントを割り振る
   */
 };
+
+
+// 完了ボタン・削除ボタンをクリック→未完了リストから削除　の処理が同じ
+// 未完了リストから指定の要素を削除
+const deleteFromIncompleteList = (target) => {
+  document.getElementById('incomplete-list').removeChild(target);
+}
 
 document.getElementById('add-button')
 .addEventListener('click', () => onClickAdd());
