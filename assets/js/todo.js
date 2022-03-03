@@ -7,6 +7,7 @@ const onClickAdd = () => {
   // 入力ボックスの値を初期化する
   document.getElementById('add-text').value = "";
 
+
   // liを生成する
   const li = document.createElement('li');
   // liにclass名を付与する 
@@ -24,12 +25,27 @@ const onClickAdd = () => {
   innerHTML: innerHTMLはHTMLタグがあるとタグとして機能
   */
 
-  // liの子要素に各要素を配置する
-  li.appendChild(p);
-  console.log(li);
 
   // 未完了のリストに追加する
   document.getElementById('incomplete-list').appendChild(li);
+
+
+  // 完了ボタンを生成
+  const completeButton = document.createElement('button');
+  completeButton.innerText = "完了";
+  //console.log(completeButton);
+
+  // 削除ボタンを生成
+  const deleteButton = document.createElement('button');
+  deleteButton.innerText = "削除";
+  //console.log(deleteButton);
+
+
+  // liの子要素に各要素を配置する
+  li.appendChild(p);
+  li.appendChild(completeButton);
+  li.appendChild(deleteButton);
+  console.log(li);
 };
 
 document.getElementById('add-button')
