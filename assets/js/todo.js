@@ -35,10 +35,26 @@ const onClickAdd = () => {
   completeButton.innerText = "完了";
   //console.log(completeButton);
 
+  // ボタン生成の時点でイベントを設定
+  completeButton.addEventListener('click', () => {
+    alert('完了');
+  });
+
   // 削除ボタンを生成
   const deleteButton = document.createElement('button');
   deleteButton.innerText = "削除";
   //console.log(deleteButton);
+
+  // ボタン生成の時点でイベントを設定
+  deleteButton.addEventListener('click', () => {
+    //alert('削除');
+    // 押された削除ボタンの親タグ(li)を完了リストから削除
+    const deleteTarget = deleteButton.parentNode;
+    //console.log(deleteTarget);
+
+    // 該当のliタグをul.incomplete-listから削除する
+    document.getElementById('incomplete-list').removeChild(deleteTarget);
+  });
 
 
   // liの子要素に各要素を配置する
@@ -46,6 +62,10 @@ const onClickAdd = () => {
   li.appendChild(completeButton);
   li.appendChild(deleteButton);
   console.log(li);
+
+  /*
+  ★ 次に完了と削除ボタンにidを付与するのではなくボタン生成の時点でイベントを割り振る
+  */
 };
 
 document.getElementById('add-button')
