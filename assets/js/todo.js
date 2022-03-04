@@ -1,47 +1,50 @@
 const onClickAdd = () => {
 
-  // 入力値を取得し変数に入れる
-  const inputText = document.getElementById('add-text').value;
-  //alert(inputText);
-
-  // 入力ボックスの値を初期化する
-  document.getElementById('add-text').value = "";
+  const inputText = document.getElementById('add-text').value; // 入力値を取得
+  document.getElementById('add-text').value = ""; // 入力値を初期化
 
 };
 
 
 // 完了ボタン・削除ボタンをクリック→未完了リストから削除　の処理が同じ
+
 // 未完了リストから指定の要素を削除
 const deleteFromIncompleteList = (target) => {
   document.getElementById('incomplete-list').removeChild(target);
 }
 
-// 未完了リストに追加する関数
-// ※todoの追加と完了リストから未完了リストに追加する処理に共通部分があるため
+
+
+/*
+
+  未完了リストに追加する関数(共通化)
+  「todoの追加」と「完了リストから未完了リストへの追加」に共通部分があるため
+  
+*/
 const createIncompleteList = (text) => {
-// liを生成する
-const li = document.createElement('li');
-// liにclass名を付与する 
-li.className = "list-row";
+// ※ 条件が異なるのは入力値なのでtextを引数として受け取る
 
-// pタグ生成、class名の付与、入力した値をpタグ内に挿入
-const p = document.createElement('p');
-p.className = "item-name";
-p.innerText = inputText; //p.textContent = inputText;
-//console.log(p);
+const li = document.createElement('li'); // liを生成する
+li.className = "list-row"; // liにclass名を付与する 
+
+const p = document.createElement('p'); // pタグ生成
+p.className = "item-name"; // class名付与
+p.innerText = inputText; // 入力した値をpタグ内に挿入
 
 
-// 完了ボタンを生成
+
+/*
+
+  完了ボタンを生成
+
+*/
 const completeButton = document.createElement('button');
 completeButton.innerText = "完了";
-//console.log(completeButton);
 
-// ボタン生成の時点でイベントを設定
-// 押された完了ボタンの親タグを未完了リストから削除
+// 完了ボタン生成の時点でイベントを設定。押された完了ボタンの親タグを未完了リストから削除
 completeButton.addEventListener('click', () => {
 
-  // 削除の処理を関数化
-  deleteFromIncompleteList(completeButton.parentNode);
+  deleteFromIncompleteList(completeButton.parentNode); // 削除の処理を関数化
 
   // 完了リストに追加する要素
   const addTarget = completeButton.parentNode; // 完了ボタンの親要素(li.list-row)を取得
@@ -49,15 +52,21 @@ completeButton.addEventListener('click', () => {
   // addTargetの最初の要素にpタグが設定されている → firstElementChildを使用
   const text = addTarget.firstElementChild.innerText;
 
-  // li.list-row以下を削除
-  addTarget.textContent = null;
 
-  // pタグ生成
-  const p = document.createElement('p');
+  addTarget.textContent = null;  // li.list-row以下を削除
+
+
+  const p = document.createElement('p');  // pタグ生成
   p.className = 'item';
   p.innerText = text;
   
-  // 戻すボタン生成
+
+
+  /*
+
+    戻すボタン生成
+
+  */
   const backButton = document.createElement('button');
   backButton.innerText = "戻す";
 
@@ -67,8 +76,8 @@ completeButton.addEventListener('click', () => {
     const deleteTarget = backButton.parentNode;
     document.getElementById('complete-list').removeChild(deleteTarget);
 
-    // テキストを取得
-    const text = deleteTarget.firstElementChild.innerText;
+
+    const text = deleteTarget.firstElementChild.innerText;// テキストを取得
     
   });
 
@@ -78,16 +87,19 @@ completeButton.addEventListener('click', () => {
 
   // 完了リストに追加
   document.getElementById('complete-list').appendChild(addTarget);
-
-
-  //const completeTarget = completeButton.parentNode;
-  //document.getElementById('incomplete-list').removeChild(completeTarget);
 });
 
-// 削除ボタンを生成
+
+
+
+
+/*
+
+  削除ボタンを生成
+
+*/
 const deleteButton = document.createElement('button');
 deleteButton.innerText = "削除";
-//console.log(deleteButton);
 
 // ボタン生成の時点でイベントを設定
 deleteButton.addEventListener('click', () => {
