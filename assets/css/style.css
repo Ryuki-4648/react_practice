@@ -10,6 +10,9 @@ body {
 @media screen and (max-width: 599px) {
   .todo-area {
     margin: 0 auto 30px;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
 }
 
@@ -78,20 +81,14 @@ button:hover {
 
 .list-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  margin: 0 auto 10px;
+  margin: 0 auto 15px;
 }
 
-
-.common-area {
-  width: 400px;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-@media screen and (max-width: 599px) {
-  .common-area {
-    max-width: 350px;
-  }
+.list-row p {
+  word-break: break-all;
+  margin: 0 0 5px;
 }
 
 /* 入力エリア */
@@ -139,4 +136,16 @@ input {
 }
 .complete-area button {
   margin: 0 5px 0 0;
+}
+
+.common-area {
+  width: 400px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 599px) {
+  .common-area {
+    max-width: 350px;
+    width: unset;
+  }
 }
