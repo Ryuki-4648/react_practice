@@ -4,22 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>簡単メモアプリ | Reactやjsの練習用</title>
-  <link rel="stylesheet" href="assets/css/style.css"> 
+  <link rel="stylesheet" href="assets/css/app.css"> 
 </head>
 <body>
-    
-  <h1 id="title">かんたんメモアプリ</h1>
+  
+  <section class="memo-area">
+    <h1 id="title">Memo App</h1>
 
-  <input id="add-text">
-  <button id="add-button">追加</button>
+    <div class="input-area">
+      <input id="add-text">
+      <button id="add-button">Add</button>
+    </div>
 
-  <div class="container">
-    <p>メモ一覧</p>
-    <ul id="memo-list">
-    </ul>
-  </div>
-
-
+    <div class="container">
+      <h2>Memo List</h2>
+      <ul id="memo-list">
+      </ul>
+    </div>
+  </section>
+  
   <script src="assets/js/app.js"></script>
 </body>
 </html>
