@@ -1,3 +1,4 @@
+/* common style */
 body {
   color: #505050;
 }
@@ -10,21 +11,25 @@ h1 {
 
 p {
   margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 15px 0 0;
 }
 
 button {
   border: none;
-  padding: 4px 20px;
+  padding: 2px 20px;
   cursor: pointer;
   transition: all .3s;
   letter-spacing: 0.1em;
-  font-size: 14px;
+  font-size: 13px;
   background-color: #ededed;
 }
-
 button:hover {
   background-color: #ddd;
 }
+
+
 
 .title {
   font-family: 'Roboto', sans-serif;
@@ -41,35 +46,42 @@ button:hover {
   margin: 0 auto 10px;
 }
 
-.item-name {
-  margin: 0 10px 0 0;
-}
 
 .common-area {
   width: 400px;
   border-radius: 8px;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 599px) {
+  .common-area {
+    width: 100%;
+    padding-right: 0 15px;
+  }
 }
 
+/* 入力エリア */
 .input-area {
   height: 30px;
   display: flex;
+  justify-content: space-between;
   margin: 0 auto 30px;
+}
+
+.add-button {
+  width: 150px;
+  padding: 4px 20px;
 }
 
 input {
   margin: 0 10px 0 0;
-  width: 200px;
+  width: 250px;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 6px 12px;
   outline: none;
 }
 
-.input-area button {
-  width: 120px;
-}
-
-
+/* 未完了エリア */
 .incomplete-area {
   background-color: #fafafa;
   border: 1px solid #812990;
@@ -78,10 +90,18 @@ input {
   margin: 0 auto 30px;
 }
 
+.incomplete-area button {
+  margin: 0 5px 0 0;
+}
+
+/* 完了エリア */
 .complete-area {
   background-color: #fafafa;
   border: 1px solid #812990;
   min-height: 200px;
   padding: 20px 10px;
   margin: 0 auto;
+}
+.complete-area button {
+  margin: 0 5px 0 0;
 }
