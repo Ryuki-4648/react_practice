@@ -5,7 +5,7 @@ const onClickAdd = () => {
   if ( inputText != "" ) {
     createIncompleteList(inputText); // 未完了リストに追加する関数
   } else {
-    alert('Todを入力してください。');
+    alert('Todoを入力してください。');
   }
 };
 

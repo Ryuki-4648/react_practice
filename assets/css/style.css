@@ -1,12 +1,48 @@
-/* common style */
 body {
+  margin: 0;
+  padding: 0;
   color: #505050;
+}
+
+.todo-area {
+  margin: 0 auto 60px;
+}
+@media screen and (max-width: 599px) {
+  .todo-area {
+    margin: 0 auto 30px;
+  }
 }
 
 h1 {
   font-family: 'Roboto', sans-serif;
   text-align: center;
   letter-spacing: 0.08em;
+  position: relative;
+  margin: 30px auto 60px;
+}
+h1:after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  width: 24px;
+  color: #812990;
+  background-color: #812990;
+  display: inline-block;
+}
+@media screen and (max-width: 599px) {
+  h1 {
+    margin: 20px auto 30px;
+  }
+  h1:after {
+    bottom: -10px;
+  }
+}
+
+ul {
+  padding: 0;
 }
 
 p {
@@ -54,8 +90,7 @@ button:hover {
 }
 @media screen and (max-width: 599px) {
   .common-area {
-    width: 100%;
-    padding-right: 0 15px;
+    max-width: 350px;
   }
 }
 
