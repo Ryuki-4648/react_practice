@@ -52,7 +52,6 @@ p {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
-  margin: 0 15px 0 0;
 }
 
 button {
@@ -88,7 +87,7 @@ button:hover {
 
 .list-row p {
   word-break: break-all;
-  margin: 0 0 5px;
+  margin: 0 15px 5px 0;
 }
 
 /* 入力エリア */
@@ -123,7 +122,7 @@ input {
 }
 
 .incomplete-area button {
-  margin: 0 5px 0 0;
+  margin: 0 5px 5px 0;
 }
 
 /* 完了エリア */
@@ -135,7 +134,7 @@ input {
   margin: 0 auto;
 }
 .complete-area button {
-  margin: 0 5px 0 0;
+  margin: 0 5px 5px 0;
 }
 
 .common-area {

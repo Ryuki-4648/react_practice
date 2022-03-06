@@ -7,6 +7,12 @@ const onClickAdd = () => {
   } else {
     alert('Todoを入力してください。');
   }
+
+  /*
+  処理が1行で終わる場合はブラケッツ{}は必要ない
+  if (inputText === "") return;
+  createIncompleteList(inputText);
+  */
 };
 
 /* 

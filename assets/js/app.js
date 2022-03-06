@@ -9,14 +9,9 @@ const onClickAdd = () => {
 
   // テキストボックスを初期化
   textEl.value = "";
-
-  if( text != "" ) {
-    createList(text);
-  } else {
-    alert('メモを入力してください。');
-  }
   
-
+  if(text === "") return;
+  createList(text);
 };
 
 const createList = (text) => {
