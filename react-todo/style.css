@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  padding: 0;
+  color: #505050;
+}
+
+.todo-area {
+  margin: 0 auto 60px;
+}
+@media screen and (max-width: 599px) {
+  .todo-area {
+    margin: 0 auto 30px;
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  letter-spacing: 0.08em;
+  position: relative;
+  margin: 30px auto 60px;
+}
+h1:after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  width: 24px;
+  color: #812990;
+  background-color: #812990;
+  display: inline-block;
+}
+@media screen and (max-width: 599px) {
+  h1 {
+    margin: 20px auto 30px;
+  }
+  h1:after {
+    bottom: -10px;
+  }
+}
+
+ul {
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+button {
+  border: none;
+  padding: 2px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 0.1em;
+  font-size: 13px;
+  background-color: #ededed;
+}
+button:hover {
+  background-color: #ddd;
+}
+
+.title {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  margin: 0 auto 20px;
+  color: #666;
+}
+
+.list-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0 auto 15px;
+}
+
+.list-row p {
+  word-break: break-all;
+  margin: 0 15px 5px 0;
+}
+
+/* 入力エリア */
+.input-area {
+  /*height: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto 30px;*/
+}
+
+.add-button {
+  width: 150px;
+  padding: 4px 20px;
+}
+
+input {
+  margin: 0 10px 0 0;
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 12px;
+  outline: none;
+}
+
+/* 未完了エリア */
+.incomplete-area {
+  background-color: #fafafa;
+  border: 1px solid #812990;
+  min-height: 200px;
+  padding: 20px 10px;
+  margin: 0 auto 30px;
+}
+
+.incomplete-area button {
+  margin: 0 5px 5px 0;
+}
+
+/* 完了エリア */
+.complete-area {
+  background-color: #fafafa;
+  border: 1px solid #812990;
+  min-height: 200px;
+  padding: 20px 10px;
+  margin: 0 auto;
+}
+.complete-area button {
+  margin: 0 5px 5px 0;
+}
+
+.common-area {
+  width: 400px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 599px) {
+  .common-area {
+    max-width: 350px;
+    width: unset;
+  }
+}
