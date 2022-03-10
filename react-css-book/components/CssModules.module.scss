@@ -1,0 +1,29 @@
+// 純粋なcss 文字列は不要
+// .module.scss
+
+.container {
+  border-radius: 20px;
+  padding: 20px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid red;
+}
+
+.title {
+  margin: 0;
+  color: #3d84a4;
+  font-size: 20px;
+}
+
+.button {
+  background-color: #abedd8;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  &:hover {
+    background-color: #ddd;
+  }
+}
