@@ -1,7 +1,14 @@
 import { Switch, Route } from "react-router-dom";
 import { Home } from "../Home";
+import { Page404 } from "../Page404";
 import { page1Routes } from "./Page1Routes";
 import { page2Routes } from "./Page2Routes";
+
+/**
+ * ４０４ページの作成方法
+ * pathは*　全て一致という意味
+ * どれにも一致しない場合にPage404をレンダリングする
+ */
 
 export const Router = () => {
   return (
@@ -41,6 +48,10 @@ export const Router = () => {
           </Switch>
         )}
       />
+
+      <Route path="*">
+        <Page404 />
+      </Route>
     </Switch>
   );
 };
