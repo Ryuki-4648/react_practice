@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useLocation } from "react-router-dom"; // 遷移時のstateを取得する
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
 
@@ -18,13 +19,18 @@ const users = [...Array(10).keys()].map((val) => {
 });
 
 export const Users = () => {
+  // stateを受け取る
+  const { state } = useLocation();
+  // console.log(state); 管理者のときは{isAdmin: true}　一般のときは{isAdmin: true}となる
+  const isAdmin = state ? state.isAdmin : false; // state存在しない場合はfalse
+  // UserCardにisAdminを渡す
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SearchInput />
       <SUserArea>
         {users.map((user) => (
-          <UserCard key={user.id} user={user} />
+          <UserCard key={user.id} user={user} isAdmin={isAdmin} />
         ))}
       </SUserArea>
     </SContainer>
