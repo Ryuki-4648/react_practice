@@ -4,9 +4,10 @@ import { UserContext } from "../../../providers/UserProvider";
 
 // UserIconWithNameのなかでisAdminの判定を行う
 export const UserIconWithName = (props) => {
-  const { image, name, isAdmin } = props;
-  const context = useContext(UserContext);
-  console.log(context); // userの数だけ{contextName: "hoge"}と表示される
+  const { image, name } = props;
+  const { userInfo } = useContext(UserContext);
+  // userInfoが存在しているかどうか
+  const isAdmin = userInfo ? userInfo.isAdmin : false;
 
   return (
     <SContainer>
