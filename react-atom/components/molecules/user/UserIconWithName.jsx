@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import styled from "styled-components";
 import { UserContext } from "../../../providers/UserProvider";
 
 // UserIconWithNameのなかでisAdminの判定を行う
-export const UserIconWithName = (props) => {
+export const UserIconWithName = memo((props) => {
+  console.log("UserIconWithName"); // contextの値を参照しているため再レンダリングされる
+
   const { image, name } = props;
   const { userInfo } = useContext(UserContext);
   // userInfoが存在しているかどうか
@@ -16,7 +18,7 @@ export const UserIconWithName = (props) => {
       {isAdmin && <SEdit>編集</SEdit>}
     </SContainer>
   );
-};
+});
 
 const SContainer = styled.div`
   text-align: center;

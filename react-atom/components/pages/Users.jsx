@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { useLocation } from "react-router-dom"; // 遷移時のstateを取得する
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
+import { SecondaryButton } from "../atoms/button/SecondaryButton";
+import { UserContext } from "../../providers/UserProvider";
+import { useContext } from "react";
 
 // 何人分も必要なので、配列を作成していく
 const users = [...Array(10).keys()].map((val) => {
@@ -18,11 +21,24 @@ const users = [...Array(10).keys()].map((val) => {
   };
 });
 
+/*
+setUserInfoを読んだ時、usrInfoの値が更新される
+Usersコンポーネントは更新される
+親が再レンダリングされたらが子もすべて再レンダリングされる
+＝　配下にあるSearchInput UserCardも再レンダリングされてしまう
+→　memoを使用する
+*/
 export const Users = () => {
+  // 今のuserInfoのisAdminフラグを見てそれと反対のuserInfoを更新する
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  const onClickSwitch = () => setUserInfo({ isAdmin: !userInfo.isAdmin });
+
   return (
     <SContainer>
       <h2>ユーザー一覧</h2>
       <SearchInput />
+      <br />
+      <SecondaryButton onClick={onClickSwitch}>切り替え</SecondaryButton>
       <SUserArea>
         {users.map((user) => (
           <UserCard key={user.id} user={user} />
