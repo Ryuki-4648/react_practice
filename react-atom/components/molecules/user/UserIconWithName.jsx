@@ -1,8 +1,13 @@
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { UserContext } from "../../../providers/UserProvider";
 
 // UserIconWithNameのなかでisAdminの判定を行う
 export const UserIconWithName = (props) => {
   const { image, name, isAdmin } = props;
+  const context = useContext(UserContext);
+  console.log(context); // userの数だけ{contextName: "hoge"}と表示される
+
   return (
     <SContainer>
       <SImg height={160} width={220} src={image} alt={name} />
