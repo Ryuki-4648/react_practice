@@ -1,13 +1,19 @@
-import React, { memo, useContext } from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
-import { UserContext } from "../../../providers/UserProvider";
+import { useRecoilValue } from "recoil"; // 値を参照するだけ
+// import { UserContext } from "../../../providers/UserProvider";
+import { userState } from "../../../store/userState";
 
 // UserIconWithNameのなかでisAdminの判定を行う
 export const UserIconWithName = memo((props) => {
   console.log("UserIconWithName"); // contextの値を参照しているため再レンダリングされる
 
   const { image, name } = props;
-  const { userInfo } = useContext(UserContext);
+  //const { userInfo } = useContext(UserContext); // 値だけ使用していて更新関数は必要ないことがわかる
+
+  // 値を見るときはuseReoilValueを使ってどのstateかを指定する
+  const userInfo = useRecoilValue(userState);
+
   // userInfoが存在しているかどうか
   const isAdmin = userInfo ? userInfo.isAdmin : false;
 

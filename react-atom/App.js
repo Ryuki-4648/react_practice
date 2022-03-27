@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { RecoilRoot } from "recoil";
 import { Top } from "./components/pages/Top";
 import { Users } from "./components/pages/Users";
 import { DefaultLayout } from "./components/templates/DefaultLayout";
@@ -16,21 +17,23 @@ import "./styles.css";
  */
 export default function App() {
   return (
-    <UserProvider>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/">
-            <DefaultLayout>
-              <Top />
-            </DefaultLayout>
-          </Route>
-          <Route path="/users">
-            <HeaderOnly>
-              <Users />
-            </HeaderOnly>
-          </Route>
-        </Switch>
-      </BrowserRouter>
-    </UserProvider>
+    <RecoilRoot>
+      <UserProvider>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/">
+              <DefaultLayout>
+                <Top />
+              </DefaultLayout>
+            </Route>
+            <Route path="/users">
+              <HeaderOnly>
+                <Users />
+              </HeaderOnly>
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </UserProvider>
+    </RecoilRoot>
   );
 }

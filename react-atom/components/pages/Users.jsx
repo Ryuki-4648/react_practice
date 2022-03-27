@@ -1,10 +1,12 @@
+import React from "react";
 import styled from "styled-components";
-import { useLocation } from "react-router-dom"; // 遷移時のstateを取得する
+// import { useLocation } from "react-router-dom"; // 遷移時のstateを取得する
 import { SearchInput } from "../molecules/SearchInput";
 import { UserCard } from "../organisms/user/UserCard";
 import { SecondaryButton } from "../atoms/button/SecondaryButton";
-import { UserContext } from "../../providers/UserProvider";
-import { useContext } from "react";
+// import { UserContext } from "../../providers/UserProvider";
+import { useRecoilState } from "recoil";
+import { userState } from "../../store/userState";
 
 // 何人分も必要なので、配列を作成していく
 const users = [...Array(10).keys()].map((val) => {
@@ -29,8 +31,13 @@ Usersコンポーネントは更新される
 →　memoを使用する
 */
 export const Users = () => {
+  // contextを使う場合
   // 今のuserInfoのisAdminフラグを見てそれと反対のuserInfoを更新する
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  //const { userInfo, setUserInfo } = useContext(UserContext);
+
+  // Recoilを使う場合
+  const [userInfo, setUserInfo] = useRecoilState(userState);
+
   const onClickSwitch = () => setUserInfo({ isAdmin: !userInfo.isAdmin });
 
   return (
