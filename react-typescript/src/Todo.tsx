@@ -1,9 +1,7 @@
 import { TodoType } from "./types/todo";
 
-// Todo.tsxはidが不要　pickを使う場合
-export const Todo = (
-  props: Pick<TodoType, "userId" | "title" | "completed">
-) => {
+// omit　不要なものを記述する場合
+export const Todo = (props: Omit<TodoType, "id">) => {
   const { title, userId, completed = false } = props;
   // completed必須じゃない設定なので、デフォルト値を設定しておく
 
