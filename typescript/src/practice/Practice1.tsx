@@ -1,12 +1,12 @@
 export const Practice1 = () => {
-  const calcTotalFee = (num) => {
+  const calcTotalFee = (num: number) => {
     const total = num * 1.1;
     console.log(total);
+    // calcTotalFeeをホバー：引数はナンバー型で何も返さない関数（void）であると表示される
   };
 
   const onClickPractice = () => {
-    calcTotalFee(1000); // 100０でも'1000'でも1100となる 型変換をしてくれる
-    // calcTotalFee('1,000'); // NaN
+    calcTotalFee(1000); // '1000'にするとエラーになってくれる
   };
 
   return (
