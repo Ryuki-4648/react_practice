@@ -3,7 +3,8 @@
       "./src/**/*"
   ],
   "compilerOptions": {
-      // "strict": true,
+      "strict": true, // 厳しいルールの設定をしている trueだとエラー出まくりの場合があるので、一旦falseにしたりする
+      "noImplicitAny": false, // プロジェクトに応じて設定を変更する
       "esModuleInterop": true,
       "lib": [
           "dom",
