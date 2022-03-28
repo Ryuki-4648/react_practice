@@ -1,11 +1,9 @@
-// propsの型指定
-type TodoType = {
-  userId: number;
-  title: string;
-  completed?: boolean; // 必須じゃない場合 オプション的なもの
-};
+import { TodoType } from "./types/todo";
 
-export const Todo = (props: TodoType) => {
+// Todo.tsxはidが不要　pickを使う場合
+export const Todo = (
+  props: Pick<TodoType, "userId" | "title" | "completed">
+) => {
   const { title, userId, completed = false } = props;
   // completed必須じゃない設定なので、デフォルト値を設定しておく
 
