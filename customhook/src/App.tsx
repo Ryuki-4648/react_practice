@@ -5,17 +5,21 @@ import "./styles.css";
 import { User } from "./types/api/user";
 import { UserProfile } from "./types/userProfile";
 
-const user = {
-  id: 1,
-  name: "なまえ",
-  email: "hogehoge@gmail.com",
-  address: "神戸市東灘区"
-};
-
 export default function App() {
   const [UserProfiles, setUserProfiles] = useState<Array<UserProfile>>([]);
 
+  /**
+   * loading
+   * .finallyはes2018から使える　tsconfigの設定を書き換える
+   * finally： .thenでも.catchでもaxiosの処理が終わった一番最後に実行する処理を書ける
+   */
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
   const onClickFetchUser = () => {
+    setLoading(true);
+    setError(false);
+
     axios
       .get<Array<User>>("https://jsonplaceholder.typicode.com/users")
       .then((res) => {
@@ -26,14 +30,30 @@ export default function App() {
           address: `${user.address.city}${user.address.suite}${user.address.street}`
         }));
         setUserProfiles(data);
+      })
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
+
   return (
     <div className="App">
       <button onClick={onClickFetchUser}>データ取得</button>
-      {UserProfiles.map((user) => (
-        <UserCard key={user.id} user={user} />
-      ))}
+      <br />
+      {error ? (
+        <p style={{ color: "red" }}>データの取得に失敗しました</p>
+      ) : loading ? (
+        <p>Loading...</p>
+      ) : (
+        <>
+          {UserProfiles.map((user) => (
+            <UserCard key={user.id} user={user} />
+          ))}
+        </>
+      )}
     </div>
   );
 }
