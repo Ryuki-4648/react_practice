@@ -1,16 +1,15 @@
+// 全ユーザー一覧を取得するカスタムフック
 import axios from "axios";
 import { useState } from "react";
-import { UserCard } from "./components/UserCard";
-import "./styles.css";
-import { User } from "./types/api/user";
-import { UserProfile } from "./types/userProfile";
+import { User } from "../types/api/user";
+import { UserProfile } from "../types/userProfile";
 
-export default function App() {
+export const useAllUsers = () => {
   const [UserProfiles, setUserProfiles] = useState<Array<UserProfile>>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  const onClickFetchUser = () => {
+  const getUsers = () => {
     setLoading(true);
     setError(false);
 
@@ -33,21 +32,5 @@ export default function App() {
       });
   };
 
-  return (
-    <div className="App">
-      <button onClick={onClickFetchUser}>データ取得</button>
-      <br />
-      {error ? (
-        <p style={{ color: "red" }}>データの取得に失敗しました</p>
-      ) : loading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          {UserProfiles.map((user) => (
-            <UserCard key={user.id} user={user} />
-          ))}
-        </>
-      )}
-    </div>
-  );
-}
+  return { getUsers, UserProfiles, loading, error };
+};
