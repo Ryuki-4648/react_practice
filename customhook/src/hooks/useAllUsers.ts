@@ -4,6 +4,7 @@ import { useState } from "react";
 import { User } from "../types/api/user";
 import { UserProfile } from "../types/userProfile";
 
+// use〜でカスタムフックを作成
 export const useAllUsers = () => {
   const [UserProfiles, setUserProfiles] = useState<Array<UserProfile>>([]);
   const [loading, setLoading] = useState(false);
