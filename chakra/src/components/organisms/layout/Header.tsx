@@ -8,7 +8,8 @@ import {
   Flex,
   Heading,
   IconButton,
-  Link
+  Link,
+  useDisclosure
 } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -22,6 +23,9 @@ import { HamburgerIcon } from "@chakra-ui/icons";
  * flexGrow:伸び率
  */
 export const Header: VFC = memo(() => {
+  // chakra ui
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <Flex
@@ -54,9 +58,10 @@ export const Header: VFC = memo(() => {
           size="sm"
           variant="unstyled"
           display={{ base: "block", md: "none" }}
+          onClick={onOpen}
         />
       </Flex>
-      <Drawer placement="left" size="xs" onClose={} isOpen={}>
+      <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay>
           <DrawerContent>
             <DrawerBody>
