@@ -1,5 +1,7 @@
 import { Box, Flex, Heading, Link, useDisclosure } from "@chakra-ui/react";
 import { memo, VFC } from "react";
+import { useHistory } from "react-router-dom";
+
 import { MenuIconButton } from "../../atoms/MenuIconButton";
 import { MenuDrawer } from "../../molecules/MenuDrawer";
 
@@ -14,6 +16,10 @@ import { MenuDrawer } from "../../molecules/MenuDrawer";
 export const Header: VFC = memo(() => {
   // chakra ui
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const history = useHistory();
+
+  // 画面遷移:homeを押したとき
+  const onClickHome = () => history.push("/home");
 
   return (
     <>
