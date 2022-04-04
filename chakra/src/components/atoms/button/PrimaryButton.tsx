@@ -4,6 +4,9 @@ import { memo, ReactNode, VFC } from "react";
 /**
  * props:ボタンの名称を受け取れたらいい
  * →chilren
+ * 親Componentのタグの間に入れられた要素を表示する
+ *
+ * props.children の型定義には ReactNode を使う
  */
 type Props = {
   children: ReactNode;
