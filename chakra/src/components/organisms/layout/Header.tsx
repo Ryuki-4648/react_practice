@@ -1,17 +1,7 @@
-import {
-  Box,
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Flex,
-  Heading,
-  Link,
-  useDisclosure
-} from "@chakra-ui/react";
+import { Box, Flex, Heading, Link, useDisclosure } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 import { MenuIconButton } from "../../atoms/MenuIconButton";
+import { MenuDrawer } from "../../molecules/MenuDrawer";
 
 /**
  * Flex:flexboxみたいなのができる
@@ -53,6 +43,7 @@ export const Header: VFC = memo(() => {
         </Flex>
         <MenuIconButton onOpen={onOpen} />
       </Flex>
+      <MenuDrawer onClose={onClose} isOpen={isOpen} />
     </>
   );
 });
