@@ -1,5 +1,6 @@
 import { Box, Divider, Flex, Heading, Input, Stack } from "@chakra-ui/react";
 import { ChangeEvent, memo, useState, VFC } from "react";
+import { useAuth } from "../../hooks/useAuth";
 
 import { PrimaryButton } from "../atoms/button/PrimaryButton";
 
@@ -7,6 +8,8 @@ import { PrimaryButton } from "../atoms/button/PrimaryButton";
  * Stack 囲った要素を等間隔に配置してくれる
  */
 export const Login: VFC = memo(() => {
+  const { login, loading } = useAuth();
+
   // ユーザーID入力した値をステートに保持していく
   // 型推論：useState<string>としてもいいが、初期値が空文字なのでusrIdは自動でstring型となる
   const [userId, setUserId] = useState("");
@@ -14,6 +17,9 @@ export const Login: VFC = memo(() => {
   // テキストボックスのイベントの型指定はHTMLInputElement
   const onChangeUserId = (e: ChangeEvent<HTMLInputElement>) =>
     setUserId(e.target.value);
+
+  // テキストボックスに入力したidを引数として渡す
+  const onClickLogin = () => login(userId);
 
   return (
     <Flex align="center" justify="center" height="100vh">
@@ -28,7 +34,7 @@ export const Login: VFC = memo(() => {
             value={userId}
             onChange={onChangeUserId}
           />
-          <PrimaryButton>ログイン</PrimaryButton>
+          <PrimaryButton onClick={onClickLogin}>ログイン</PrimaryButton>
         </Stack>
       </Box>
     </Flex>

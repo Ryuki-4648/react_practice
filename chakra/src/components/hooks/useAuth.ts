@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { User } from "../types/api/user";
 
@@ -7,10 +7,16 @@ export const useAuth = () => {
   // react-router-domのhistoryを利用
   const history = useHistory();
 
+  // loading
+  const [loading, setLoading] = useState(false);
+
+  // カスタムフック
   const login = useCallback(
     (id: string) => {
+      setLoading(true);
+
       axios
-        .get<User>(`https://jsonplaceholder.typicode.com/users${id}`)
+        .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((res) => {
           // データが見つかった場合はホーム画面に遷移
           if (res.data) {
@@ -20,9 +26,11 @@ export const useAuth = () => {
           }
           // エラーの場合
         })
-        .catch(() => alert("ログインできません"));
+        .catch(() => alert("ログインできません"))
+        .finally(() => setLoading(false));
     },
     [history]
   ); // [history]とするか、eslint非活性にする
-  return { login };
+  // カスタムフックから返却
+  return { login, loading };
 };
