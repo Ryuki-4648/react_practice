@@ -8,19 +8,25 @@ import { memo, ReactNode, VFC } from "react";
  *
  * props.children の型定義には ReactNode を使う
  */
+
+// 何も入力していないときはボタンを押せないようにする
 type Props = {
   children: ReactNode;
+  disabled?: boolean; // オプションのpropsとする
+  loading?: boolean;
   onClick: () => void;
 };
 
 export const PrimaryButton: VFC<Props> = memo((props) => {
-  const { children, onClick } = props;
+  const { children, disabled = false, loading = false, onClick } = props;
 
   return (
     <Button
       bg="teal.400"
       color="white"
       _hover={{ opacity: 0.8 }}
+      disabled={disabled}
+      isLoading={loading}
       onClick={onClick}
     >
       {children}
