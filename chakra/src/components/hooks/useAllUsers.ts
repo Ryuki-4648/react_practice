@@ -12,7 +12,8 @@ export const useAllUsers = () => {
   const [loading, setLoading] = useState(false);
   // useState<boolean>としてもいいが型推論でtrue falseでなってくれるのでつけなくてもいい
 
-  const [users, setUsers] = useState<Array<User>>();
+  const [users, setUsers] = useState<Array<User>>([]);
+  // usersの初期値　空配列を設定
 
   /**
    * axios使ってapiコールしていく
