@@ -12,11 +12,14 @@ import { memo, useCallback, useEffect, VFC } from "react";
 import { UserCard } from "../organisms/user/UserCard";
 import { useAllUsers } from "../../hooks/useAllUsers";
 import { UserDetailModal } from "../organisms/user/UserDetailModal";
+import { useSelectUsers } from "../../hooks/useSelectUsers";
 
 export const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { getUsers, users, loading } = useAllUsers();
+
+  const { onSelectUser, selectedUser } = useSelectUsers();
 
   /* 画面表示（マウント）時にユーザー一覧を取得したい
   空配列：初期マウント時一回だけ実行
@@ -26,6 +29,7 @@ export const UserManagement: VFC = memo(() => {
   // idが渡ってくる
   const onClickUser = useCallback((id: number) => {
     console.log(id);
+    onSelectUser({ id, users });
     onOpen();
   }, []);
 
