@@ -30,10 +30,15 @@ export const UserManagement: VFC = memo(() => {
   useEffect(() => getUsers(), []);
 
   // idが渡ってくる
-  const onClickUser = useCallback((id: number) => {
-    console.log(id);
-    onSelectUser({ id, users, onOpen });
-  }, []);
+  // モーダル開くと入力値が真っ白になっている。useCallBack使うと陥りやすい。
+  // usersを依存配列に設定する
+  const onClickUser = useCallback(
+    (id: number) => {
+      console.log(id);
+      onSelectUser({ id, users, onOpen });
+    },
+    [users, onSelectUser, onOpen]
+  );
 
   return (
     <>
