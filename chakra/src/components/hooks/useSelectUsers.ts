@@ -19,11 +19,12 @@ export const useSelectUsers = () => {
     const targetUser = users.find((user) => user.id === id);
 
     /**
-     * setSelectedUser(targetUser)がエラーになる件
-     * findで見つからない場合はundefinedが返される
-     * ??：targetUserがundefinedの場合はnullを返す式を書くことで回避する方法もある
+     * setSelectedUser(targetUser)のエラー回避
+     * userはあるものという前提で作成する場合
+     * !をつけundefinedの可能性を排除する方法　TypeScriptの書き方
+     * 使いすぎに注意すること。絶対に存在する場合にだけ使うこと。
      */
-    setSelectedUser(targetUser ?? null);
+    setSelectedUser(targetUser!);
   }, []);
 
   return { onSelectUser };
