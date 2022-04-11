@@ -4,7 +4,7 @@ import { memo, VFC } from "react";
 // propsとして受け取りたいもの　画像と名前
 // どのユーザーが押されたかオンクリックで認識。引数としてユーザーのidを設定
 type Props = {
-  id: number;
+  id: number; // 新しく追加する
   imageUrl: string;
   userName: string;
   fullName: string;
@@ -14,6 +14,7 @@ type Props = {
 export const UserCard: VFC<Props> = memo((props) => {
   const { id, imageUrl, userName, fullName, onClick } = props;
 
+  // onclickの引数にidを指定
   return (
     <Box
       w="260"
