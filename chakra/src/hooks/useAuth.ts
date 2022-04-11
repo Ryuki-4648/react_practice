@@ -3,6 +3,7 @@ import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { User } from "../types/api/user";
 import { useMessage } from "./useMessage";
+import { useLoginUser } from "../hooks/useLoginUser";
 
 export const useAuth = () => {
   // react-router-domのhistoryを利用
@@ -10,6 +11,8 @@ export const useAuth = () => {
 
   // ログイン時のメッセージ表示
   const { showMessage } = useMessage();
+
+  const { setLoginUser } = useLoginUser();
 
   // loading
   const [loading, setLoading] = useState(false);
@@ -24,21 +27,22 @@ export const useAuth = () => {
         .then((res) => {
           // データが見つかった場合はホーム画面に遷移
           if (res.data) {
+            setLoginUser(res.data);
             showMessage({ title: "ログインしました", status: "success" });
             history.push("/home");
           } else {
             showMessage({ title: "ユーザーが見つかりません", status: "error" });
-            //alert("ユーザーが見つかりません");
+            setLoading(false);
           }
           // エラーの場合
         })
-        .catch(() =>
-          showMessage({ title: "ログインできません", status: "error" })
-        )
-        .finally(() => setLoading(false));
+        .catch(() => {
+          showMessage({ title: "ログインできません", status: "error" });
+          setLoading(false);
+        });
     },
     // showMessageも追加しないとエラーになる。もしくはeslintで非活性にするのもok
-    [history, showMessage]
+    [history, showMessage, setLoginUser]
   ); // [history]とするか、eslint非活性にする
   // カスタムフックから返却
   return { login, loading };
