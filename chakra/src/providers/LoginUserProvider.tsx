@@ -8,14 +8,14 @@ import {
 
 import { User } from "../types/api/user";
 
-type LoginUserContextType = {
+export type LoginUserContextType = {
   loginUser: User | null;
   // useState等の更新関数の型　Dispatch, SetStateActionを使っていく
   setLoginUser: Dispatch<SetStateAction<User | null>>;
 };
 
 // as 強制的に型を認識させる
-const LoginUserContext = createContext<LoginUserContextType>(
+export const LoginUserContext = createContext<LoginUserContextType>(
   {} as LoginUserContextType
 );
 
