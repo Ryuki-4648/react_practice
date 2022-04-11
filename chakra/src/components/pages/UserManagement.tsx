@@ -21,6 +21,8 @@ export const UserManagement: VFC = memo(() => {
 
   const { onSelectUser, selectedUser } = useSelectUsers();
 
+  console.log(selectedUser); // user情報を取得できている
+
   /* 画面表示（マウント）時にユーザー一覧を取得したい
   空配列：初期マウント時一回だけ実行
   */
@@ -29,8 +31,7 @@ export const UserManagement: VFC = memo(() => {
   // idが渡ってくる
   const onClickUser = useCallback((id: number) => {
     console.log(id);
-    onSelectUser({ id, users });
-    onOpen();
+    onSelectUser({ id, users, onOpen });
   }, []);
 
   return (
