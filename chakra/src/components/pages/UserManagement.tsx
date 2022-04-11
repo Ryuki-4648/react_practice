@@ -22,6 +22,7 @@ export const UserManagement: VFC = memo(() => {
   const { onSelectUser, selectedUser } = useSelectUsers();
 
   console.log(selectedUser); // user情報を取得できている
+  // selectedUserの情報をdetail modalに渡し、モーダルを表示していきたい
 
   /* 画面表示（マウント）時にユーザー一覧を取得したい
   空配列：初期マウント時一回だけ実行
@@ -55,7 +56,8 @@ export const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal isOpen={isOpen} onClose={onClose} />
+
+      <UserDetailModal user={selectedUser} isOpen={isOpen} onClose={onClose} />
     </>
   );
 });
