@@ -11,7 +11,7 @@ import {
   Input,
   ModalFooter
 } from "@chakra-ui/react";
-import { memo, VFC } from "react";
+import { memo, useState, VFC } from "react";
 
 import { User } from "../../../types/api/user";
 import { PrimaryButton } from "../../atoms/button/PrimaryButton";
@@ -26,6 +26,15 @@ type Props = {
 
 export const UserDetailModal: VFC<Props> = memo((props) => {
   const { user, isOpen, isAdmin = false, onClose } = props;
+
+  /**
+   * valueの値（value={user?.username}など）をstate経由で渡す
+   * それぞれ対応したstateを用意
+   */
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
   const onClickUpdate = () => alert("aa");
 
@@ -44,19 +53,19 @@ export const UserDetailModal: VFC<Props> = memo((props) => {
           <Stack spacing={4}>
             <FormControl>
               <FormLabel>名前</FormLabel>
-              <Input value={user?.username} isReadOnly />
+              <Input value={user?.username} isReadOnly={!isAdmin} />
             </FormControl>
             <FormControl>
               <FormLabel>フルネーム</FormLabel>
-              <Input value={user?.name} isReadOnly />
+              <Input value={user?.name} isReadOnly={!isAdmin} />
             </FormControl>
             <FormControl>
               <FormLabel>メール</FormLabel>
-              <Input value={user?.email} isReadOnly />
+              <Input value={user?.email} isReadOnly={!isAdmin} />
             </FormControl>
             <FormControl>
               <FormLabel>電話番号</FormLabel>
-              <Input value={user?.phone} isReadOnly />
+              <Input value={user?.phone} isReadOnly={!isAdmin} />
             </FormControl>
           </Stack>
         </ModalBody>
