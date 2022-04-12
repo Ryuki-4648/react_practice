@@ -27,7 +27,12 @@ export const useAuth = () => {
         .then((res) => {
           // データが見つかった場合はホーム画面に遷移
           if (res.data) {
-            setLoginUser(res.data);
+            // isAdminフラグ
+            // id=10のときフラグをtrueにする
+            // 10以外でログインするとコンソールでisAdmin: falseとなる
+            const isAdmin = res.data.id === 10 ? true : false;
+            // 新しくオブジェクトを定義するような形。追加でisAdminを渡す（スプレッド構文）
+            setLoginUser({ ...res.data, isAdmin });
             showMessage({ title: "ログインしました", status: "success" });
             history.push("/home");
           } else {

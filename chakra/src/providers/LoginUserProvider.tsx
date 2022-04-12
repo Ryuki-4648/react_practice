@@ -8,10 +8,12 @@ import {
 
 import { User } from "../types/api/user";
 
+type LoginUser = User & { isAdmin: boolean };
+
 export type LoginUserContextType = {
-  loginUser: User | null;
+  loginUser: LoginUser | null;
   // useState等の更新関数の型　Dispatch, SetStateActionを使っていく
-  setLoginUser: Dispatch<SetStateAction<User | null>>;
+  setLoginUser: Dispatch<SetStateAction<LoginUser | null>>;
 };
 
 // as 強制的に型を認識させる
@@ -25,7 +27,7 @@ export const LoginUserProvider = (props: { children: ReactNode }) => {
   const { children } = props;
 
   // loginUserと更新関数
-  const [loginUser, setLoginUser] = useState<User | null>(null);
+  const [loginUser, setLoginUser] = useState<LoginUser | null>(null);
 
   // contextの値として渡すものをvalueに渡していく
   return (
